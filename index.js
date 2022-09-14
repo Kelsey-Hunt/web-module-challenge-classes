@@ -108,7 +108,7 @@ class Car {
       return `I ran out of fuel at ${this.odometer} miles!`;
     }
   }
-}
+};
 
 const myTruck = new Car('Silverado', 10);
 
@@ -132,8 +132,23 @@ console.log(myTruck);
 */
 
 class Lambdasian {
-  
-}
+  constructor(attr){
+    this.name = attr.name;
+    this.age = attr.age;
+    this.location = attr.location;
+  }
+  speak() {
+    return `Hello my name is ${this.name}, I am from ${this.location}.`;
+  }
+};
+
+const kelsey = new Lambdasian({
+  name: 'Kelsey',
+  age: 31,
+  location: 'Missouri',
+});
+console.log(kelsey);
+console.log(kelsey.speak());
 
 /*
   TASK 4
