@@ -178,6 +178,24 @@ class Instructor extends Lambdasian {
   grade(student, subject) {
     return `${student.name} receives a perfect score on ${subject}`;
   };
+  adjustGrade(student) {
+    let adjustment = Math.round(Math.random() * 100);
+    let randomizer = Math.round(Math.random() * 1);
+    if(randomizer === 0){
+      if(student.grade - adjustment >= 0){
+        student.grade = student.grade - adjustment;
+      } else {
+        student.grade = 0;
+      };
+    } else if (student.grade + adjustment <= 100) {
+      student.grade = student.grade + adjustment;
+    } else {
+      student.grade = 100;
+    };
+    if(student.grade >= 70) {
+      return `Let ${student.name} graduate!`
+    }
+  };
 };
 
 const bob = new Instructor({
@@ -215,6 +233,7 @@ class Student extends Lambdasian {
     this.previousBackground = studentAttrs.previousBackground;
     this.className = studentAttrs.className;
     this.favSubjects = studentAttrs.favSubjects;
+    this.grade = studentAttrs.grade;
   }
   listSubjects() {
     let subjectList = this.favSubjects.toString();
@@ -234,7 +253,8 @@ const caleb = new Student ({
   location: 'Missouri',
   previousBackground: 'Lineman',
   className: 'ABC123',
-  favSubjects: ['CSS', 'JavaScript']
+  favSubjects: ['CSS', 'JavaScript'],
+  grade: 80
 })
 
 console.log(caleb);
@@ -290,6 +310,10 @@ console.log(sally.debugsCode(caleb, 'classes'));
       + This method, when called, will check the grade of the student and see if they're ready to graduate from BloomTech
       + If the student's grade is above a 70% let them graduate! Otherwise go back to grading their assignments to increase their score.
 */
+
+console.log(caleb);
+bob.adjustGrade(caleb);
+console.log(caleb);
 
 
 //End of Challenge
