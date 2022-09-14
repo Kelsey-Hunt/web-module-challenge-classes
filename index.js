@@ -165,9 +165,33 @@ console.log(kelsey.speak());
         + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
 */
 
-class Instructor {
+class Instructor extends Lambdasian {
+  constructor(instructorAttr) {
+    super(instructorAttr);
+    this.specialty = instructorAttr.specialty;
+    this.favLanguage = instructorAttr.favLanguage;
+    this.catchPhrase = instructorAttr.catchPhrase;
+  }
+  demo(subject) {
+    return `Today we are learning about ${subject}`;
+  };
+  grade(student, subject) {
+    return `${student.name} receives a perfect score on ${subject}`;
+  };
+};
 
-}
+const bob = new Instructor({
+  name: 'Bob',
+  age: 35,
+  location: 'Arizona',
+  specialty: 'Web Development',
+  favLanguage: 'JavaScript',
+  catchPhrase: 'Heyyyoooo'
+});
+
+console.log(bob);
+console.log(bob.demo('classes'));
+console.log(bob.grade(kelsey, 'classes'));
 
 /*
   TASK 5
