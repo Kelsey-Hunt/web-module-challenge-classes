@@ -256,9 +256,31 @@ console.log(caleb.sprintChallenge('classes'));
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
 
-class ProjectManager {
-   
-}
+class ProjectManager extends Instructor {
+  constructor(pmAttrs) {
+    super(pmAttrs);
+    this.gradClassName = pmAttrs.gradClassName;
+    this.favInstructor = pmAttrs.favInstructor;
+  }
+  standUp(channel) {
+    return `${this.name} announces to ${channel}, @channel standy times!`;
+  }
+  debugsCode(student, subject) {
+    return `${this.name} debugs ${student.name}'s code on ${subject}`;
+  }
+};
+
+const sally = new ProjectManager({
+  name: 'Sally',
+  age: '40',
+  location: 'Hawaii',
+  gradClassName: 'CS1',
+  favInstructor: 'Bob'
+})
+
+console.log(sally);
+console.log(sally.standUp('Web Dev'));
+console.log(sally.debugsCode(caleb, 'classes'));
 
 /*
   STRETCH PROBLEM (no tests!)
